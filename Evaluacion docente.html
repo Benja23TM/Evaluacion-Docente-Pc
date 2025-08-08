@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Evaluación Docente</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: green;
+            color: white;
+            text-align: center;
+            padding: 30px 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 40px 10px;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            width: 250px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .card button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .card button:hover {
+            background-color: #004d40;
+        }
+
+        .mensaje {
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Evaluación Docente</h1>
+        <p>Selecciona al docente que deseas evaluar</p>
+    </header>
+
+    <div class="container">
+        <!-- Docentes -->
+        <div class="card" id="d1">
+            <h2>Asdrubal del Valle</h2><h4>Estadística</h4>
+            <button onclick="evaluar('d1', 'https://docs.google.com/forms/d/e/1FAIpQLScO9sqytwvmhczs7SvWoDD9VPMhXzERIyenOjT2q1zWp5MdDQ/viewform?usp=dialog')">Evaluar</button>
+            <div class="mensaje" id="m-d1">Evaluado ✅</div>
+        </div>
+
+        <div class="card" id="d2">
+            <h2>Benjamin Tello</h2><h4>Programación</h4>
+            <button onclick="evaluar('d2', 'https://docs.google.com/forms/d/e/1FAIpQLScJyziKfm6ohWzsZf4UnrOLEWbSA00LFzOHhHDWx_njH7zcFA/viewform?usp=dialog')">Evaluar</button>
+            <div class="mensaje" id="m-d2">Evaluado ✅</div>
+        </div>
+
+        <div class="card" id="d3">
+            <h2>Werner Ivan</h2><h4>Contabilidad Gubernamental</h4>
+            <button onclick="evaluar('d3', 'https://docs.google.com/forms/d/e/1FAIpQLSfBzuZ_GQAC5CmqZwpCbtjWePI9yE17MIgYDgYpgv_2DSEOjQ/viewform?usp=dialog')">Evaluar</button>
+            <div class="mensaje" id="m-d3">Evaluado ✅</div>
+        </div>
+
+        <div class="card" id="d4">
+            <h2>Juan Sánchez</h2><h4>Derecho Mercantil</h4>
+            <button onclick="evaluar('d4', 'https://docs.google.com/forms/d/e/1FAIpQLSe0nb3PcFjBpcgizveTNs5Jb9xodbkK9_XLXy1M2IXU7cBenA/viewform?usp=dialog')">Evaluar</button>
+            <div class="mensaje" id="m-d4">Evaluado ✅</div>
+        </div>
+
+        <div class="card" id="d5">
+            <h2>Werner Ivan</h2><h4>Práctica</h4>
+            <button onclick="evaluar('d5', 'https://docs.google.com/forms/d/e/1FAIpQLSfK0PIgvktbQnkY-ZA4otKmihEGPQ1i_GCkMy1ejp-oazP7Hw/viewform?usp=dialog')">Evaluar</button>
+            <div class="mensaje" id="m-d5">Evaluado ✅</div>
+        </div>
+
+        <div class="card" id="d6">
+            <h2>Bernardo Fredy</h2><h4>Contabilidad</h4>
+            <button onclick="evaluar('d6', 'https://docs.google.com/forms/d/e/1FAIpQLSekke5QFQbaIRhKaqFpEt4yLb8Rg0UQ9K3MEg_po6IThWxYkg/viewform?usp=dialog')">Evaluar</button>
+            <div class="mensaje" id="m-d6">Evaluado ✅</div>
+        </div>
+
+        <div class="card" id="d7">
+            <h2>Juan David</h2><h4>Auditoría</h4>
+            <button onclick="evaluar('d7', 'https://docs.google.com/forms/d/e/1FAIpQLSfnMgUS9s3kcRQ081ciGbFLCudM5NEC76ty17mWk25Xtb_qZg/viewform?usp=dialog')">Evaluar</button>
+            <div class="mensaje" id="m-d7">Evaluado ✅</div>
+        </div>
+
+        <div class="card" id="d8">
+            <h2>Elmer García</h2><h4>Organización de Empresas</h4>
+            <button onclick="evaluar('d8', 'https://docs.google.com/forms/d/e/1FAIpQLSehFfk6PolXfiUPJH97z3oOB9L5VTHuFzgQDTzxv3aHGQ9IuQ/viewform?usp=dialog')">Evaluar</button>
+            <div class="mensaje" id="m-d8">Evaluado ✅</div>
+        </div>
+
+        <div class="card" id="d9">
+            <h2>Juan Dionicio</h2><h4>Seminario</h4>
+            <button onclick="evaluar('d9', 'https://docs.google.com/forms/d/e/1FAIpQLSca8TPvYWwbZREyM2FMfH3TL-1Waa6EcJR-oYb_O0QJluNy8g/viewform?usp=dialog')">Evaluar</button>
+            <div class="mensaje" id="m-d9">Evaluado ✅</div>
+        </div>
+
+        <div class="card" id="d10">
+            <h2>Jacinto de Paz</h2><h4>Ética Profesional</h4>
+            <button onclick="evaluar('d10', 'https://docs.google.com/forms/d/e/1FAIpQLScjXgym-yBNQFLgslPSnK_UTrSLJz3irNPKcnrLnKHncCeufQ/viewform?usp=dialog')">Evaluar</button>
+            <div class="mensaje" id="m-d10">Evaluado ✅</div>
+        </div>
+
+        <div class="card" id="d11">
+            <h2>Administración</h2><h4>Personal Administrativo</h4>
+            <button onclick="evaluar('d11', 'https://docs.google.com/forms/d/e/1FAIpQLSfjwdGwqOHfY93-t2-zH131bM9R2sFNupn9k0wQR9PvqKLPmg/viewform?usp=dialog')">Evaluar</button>
+            <div class="mensaje" id="m-d11">Evaluado ✅</div>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 Evaluación Docente
+    </footer>
+
+    <script>
+        const ids = ['d1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11'];
+        const evaluados = new Set();
+
+        function evaluar(id, url) {
+            window.open(url, '_blank'); // abre el form
+            document.getElementById('m-' + id).style.display = 'block';
+            evaluados.add(id);
+
+            if (evaluados.size === ids.length) {
+                alert("🎉 ¡Gracias por evaluar a todos los docentes!");
+            }
+        }
+    </script>
+</body>
+</html>
