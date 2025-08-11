@@ -156,22 +156,51 @@
     </div>
 
     <footer>
-        © 2025 Evaluación Docente
+        © 2025 Evaluación Docente IMDI
     </footer>
 
-    <script>
-        const ids = ['d1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11'];
-        const evaluados = new Set();
+   <script>
+    const ids = ['d1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11'];
 
-        function evaluar(id, url) {
-            window.open(url, '_blank'); // abre el form
-            document.getElementById('m-' + id).style.display = 'block';
-            evaluados.add(id);
+    window.addEventListener("DOMContentLoaded", () => {
+        ids.forEach(id => {
+            if (localStorage.getItem("evaluado_" + id) === "true") {
+                bloquearBoton(id);
+            }
+        });
+        verificarFinalizado();
+    });
 
-            if (evaluados.size === ids.length) {
-                alert("🎉 ¡Gracias por evaluar a todos los docentes!");
+    function evaluar(id, url) {
+        if (localStorage.getItem("evaluado_" + id) === "true") return;
+
+        window.open(url, '_blank');
+        localStorage.setItem("evaluado_" + id, "true");
+        bloquearBoton(id);
+        verificarFinalizado();
+    }
+
+    function bloquearBoton(id) {
+        const btn = document.querySelector(`#${id} button`);
+        const msg = document.getElementById('m-' + id);
+        btn.disabled = true;
+        btn.style.opacity = "0.6";
+        btn.style.cursor = "not-allowed";
+        msg.style.display = 'block';
+    }
+
+    function verificarFinalizado() {
+        const totalEvaluados = ids.filter(id => localStorage.getItem("evaluado_" + id) === "true").length;
+        if (totalEvaluados === ids.length) {
+            if (confirm("🎉 ¡Has terminado todas las evaluaciones!\n¿Deseas salir ahora?")) {
+                window.close(); // intenta cerrar la ventana
+                // Si prefieres redirigir, reemplaza la línea anterior por:
+                // window.location.href = "https://tupagina.com";
             }
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
+
